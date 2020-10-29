@@ -1,24 +1,42 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import sound from './Bomb.mp3';
 import './App.css';
+import Figure from "./Figure";
+import x from "./svg/Union.svg"
+import Vector1 from "./svg/Vector1";
+
+const listOfFigures = [{
+  id: 1,
+  order: 'first',
+  bgc: 'darkgrey'
+},
+  {
+    id: 2,
+    order: 'second',
+    bgc: 'grey'
+  }]
 
 function App() {
+
+  let audio = new Audio(sound)
+
+  // useEffect(() => {
+  //   audio.load();
+  // }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={`
+      game-zone
+      aim
+      `}
+         // onClick={audio.play}
         >
-          Learn React
-        </a>
-      </header>
+
+      {listOfFigures.map(el =>
+        <Figure key={el.id} el={el} />
+      )}
+      <Vector1/>
     </div>
   );
 }

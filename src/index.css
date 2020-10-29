@@ -11,3 +11,46 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.aim {
+  cursor: url('aim.png') 20 20, auto;
+}
+
+.game-zone {
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  border: 5px solid black;
+  position: relative;
+}
+
+.figure {
+  width: 50px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+}
+
+
+.third {
+  right: 50px;
+}
+
+.second {
+  right: 150px;
+}
+
+.first {
+  right: 250px;
+}
+.red {
+  background-color: #ff0000 !important;
+}
+
+.grey {
+  background-color: grey;
+}
+
+.darkgrey {
+  background-color: darkgrey;
+}
