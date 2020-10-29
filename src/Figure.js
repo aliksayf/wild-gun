@@ -3,6 +3,15 @@ import React, {useEffect, useState} from "react";
 function Figure(props) {
 
     const [red, setRed] = useState('grey');
+    const [style, setStyle] = useState({});
+
+    useEffect(()=> {
+        setStyle ({
+            bottom: Math.random() * 450,
+            right: Math.random() * 750,
+            position: 'absolute'
+        });
+    }, [])
 
 
     const shoot = () => {
@@ -10,10 +19,12 @@ function Figure(props) {
         console.log('shoot')
     }
 
+
     console.log('props', props)
 
     return (
         <svg
+            style={style}
             width="57" height="126" viewBox="0 0 57 126"  xmlns="http://www.w3.org/2000/svg">
             <path
                 // className={`figure ${props.el.bgc} ${props.el.order} ${red}`}

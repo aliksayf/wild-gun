@@ -6,31 +6,37 @@ import x from "./svg/Union.svg"
 import Vector1 from "./svg/Vector1";
 
 const listOfFigures = [{
-  id: 1,
-  order: 'first',
-  bgc: 'darkgrey'
-},
+    id: 1,
+    order: 'first',
+    bgc: 'darkgrey'
+  },
   {
     id: 2,
     order: 'second',
     bgc: 'grey'
+  },
+  {
+    id: 3,
+    order: 'third',
+    bgc: 'darkgrey'
   }]
 
 function App() {
 
-  let audio = new Audio(sound)
+  const [audio] = useState(new Audio(sound));
 
-  // useEffect(() => {
-  //   audio.load();
-  // }, [])
-
+  const toggle = () => {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+  }
 
   return (
     <div className={`
       game-zone
       aim
       `}
-         // onClick={audio.play}
+         onClick={toggle}
         >
 
       {listOfFigures.map(el =>
