@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/wild-gun/static/css/main.5930375a.chunk.css",
+    "main.js": "/wild-gun/static/js/main.4cc91f9a.chunk.js",
+    "main.js.map": "/wild-gun/static/js/main.4cc91f9a.chunk.js.map",
+    "runtime-main.js": "/wild-gun/static/js/runtime-main.49041af9.js",
+    "runtime-main.js.map": "/wild-gun/static/js/runtime-main.49041af9.js.map",
+    "static/css/2.6414bb7b.chunk.css": "/wild-gun/static/css/2.6414bb7b.chunk.css",
+    "static/js/2.fc038866.chunk.js": "/wild-gun/static/js/2.fc038866.chunk.js",
+    "static/js/2.fc038866.chunk.js.map": "/wild-gun/static/js/2.fc038866.chunk.js.map",
+    "index.html": "/wild-gun/index.html",
+    "precache-manifest.281165c4812d10baef61e1343961e95f.js": "/wild-gun/precache-manifest.281165c4812d10baef61e1343961e95f.js",
+    "service-worker.js": "/wild-gun/service-worker.js",
+    "static/css/2.6414bb7b.chunk.css.map": "/wild-gun/static/css/2.6414bb7b.chunk.css.map",
+    "static/css/main.5930375a.chunk.css.map": "/wild-gun/static/css/main.5930375a.chunk.css.map",
+    "static/js/2.fc038866.chunk.js.LICENSE.txt": "/wild-gun/static/js/2.fc038866.chunk.js.LICENSE.txt",
+    "static/media/Bomb.mp3": "/wild-gun/static/media/Bomb.6932b011.mp3",
+    "static/media/Union.svg": "/wild-gun/static/media/Union.f5c69e1c.svg",
+    "static/media/index.css": "/wild-gun/static/media/aim.2a867ec0.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.49041af9.js",
+    "static/css/2.6414bb7b.chunk.css",
+    "static/js/2.fc038866.chunk.js",
+    "static/css/main.5930375a.chunk.css",
+    "static/js/main.4cc91f9a.chunk.js"
+  ]
+}
