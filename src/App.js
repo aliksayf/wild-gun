@@ -21,7 +21,7 @@ function App() {
         rCycle();
     }, [])
 
-    const [round, setRound] = useState(panel)
+    const [round, setRound] = useState(<Game/>)
 
     const toggle = () => {
         audio.pause();
