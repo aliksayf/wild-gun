@@ -13,7 +13,7 @@ code {
 }
 
 .aim {
-  cursor: url('aim.png') 20 20, auto;
+  cursor: url('./svg/aim.svg') 20 20, auto;
 }
 
 .game-zone {
@@ -22,6 +22,7 @@ code {
   margin: auto;
   border: 5px solid black;
   position: relative;
+  background-color: teal;
 }
 
 .figure {
