@@ -9,16 +9,25 @@ function App() {
     const panel = <div></div>
 
     let i = 1;
-    const rCycle = () => {
+    const rCycle = (t) => {
         setTimeout(() => {
-            i % 2 !== 0 ? setRound(<Game/>) : setRound(panel);
+            // i % 2 !== 0 ? setRound(<Game/>) : setRound(panel);
+            // i++
+            if(i < 7){
+                if(i % 2 !== 0) {
+                    setRound(<Game/>)
+                    rCycle(3000);
+            } else {
+                    setRound(panel);
+                    rCycle(1000);
+                }
+            }
             i++
-            i < 7 && rCycle();
-        }, 3000)
+        }, t)
     }
 
     useEffect(() => {
-        rCycle();
+        rCycle(500);
     }, [])
 
     const [round, setRound] = useState(<Game/>)
