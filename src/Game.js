@@ -1,34 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import Figure from "./Figure";
-import Vector1 from "./svg/Vector1";
+import React, {useEffect, useState} from 'react';
+import Round from './Round';
+import sound from './Gunshot.mp3';
 
-const listOfFigures = [{
-    id: 1,
-    order: 'first',
-    bgc: 'darkgrey'
-  },
-  {
-    id: 2,
-    order: 'second',
-    bgc: 'grey'
-  },
-  {
-    id: 3,
-    order: 'third',
-    bgc: 'darkgrey'
-  }]
+function Game(props) {
 
-function Game() {
+    const{ startGame } = props;
 
+    const [audio] = useState(new Audio(sound));
 
-  return (
-    <>
-      {listOfFigures.map(el =>
-        <Figure key={el.id} el={el} />
-      )}
-      <Vector1/>
-    </>
-  );
+    const panel = <div></div>
+
+    let i = 1;
+    const rCycle = (t) => {
+        setTimeout(() => {
+            // i % 2 !== 0 ? setRound(<Round/>) : setRound(panel);
+            // i++
+            if(i <= 7){
+                if(i % 2 === 0) {
+                    setRound(<Round/>)
+                    rCycle(3000);
+            } else {
+                    setRound(panel);
+                    rCycle(1000);
+                }
+            } else {
+                clearTimeout();
+                startGame();
+            }
+            i++
+        }, t)
+    }
+
+    useEffect(() => {
+        rCycle(500);
+    }, [])
+
+    const [round, setRound] = useState(panel)
+
+    const toggle = () => {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
+    }
+
+    return (
+        <div
+             onPointerDown={toggle}
+        >
+            {round}
+            {/*<Round/>*/}
+        </div>
+    );
 }
 
 export default Game;
