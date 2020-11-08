@@ -15,12 +15,12 @@ function App() {
     }
 
     return (
-        <div className={`
-      game-zone
-      aim
-      `}>
+        <>
             {info.started ? <Game startGame={startGame}/> : <Start startGame={startGame}/>}
-        </div>
+
+
+
+        </>
     );
 }
 

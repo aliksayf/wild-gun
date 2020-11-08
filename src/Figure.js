@@ -14,7 +14,8 @@ function Figure(props) {
         setStyle ({
             bottom: Math.random() * 450,
             right: Math.random() * 750,
-            position: 'absolute'
+            position: 'absolute',
+            transition: 'transform 1s',
         });
     }, [])
 
@@ -26,11 +27,14 @@ function Figure(props) {
             audio.play();
             setRed('red')
         }, 150)
+        setStyle({...style,   transform: 'rotateX(85deg)',
+                                transformOrigin: 'bottom',
+    })
     }
 
-    const toggle =() => {
-        setFig('hitted')
-    }
+    // const toggle =() => {
+    //     setFig('hitted')
+    // }
 
 
     console.log('props', props)
@@ -42,6 +46,7 @@ function Figure(props) {
             {/*</div>*/}
         <svg
             style={style}
+            className={fig}
             width="57" height="126" viewBox="0 0 57 126"  xmlns="http://www.w3.org/2000/svg">
             <path
                 // className={`figure ${props.el.bgc} ${props.el.order} ${red}`}

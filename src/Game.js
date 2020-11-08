@@ -15,7 +15,7 @@ function Game(props) {
         setTimeout(() => {
             // i % 2 !== 0 ? setRound(<Round/>) : setRound(panel);
             // i++
-            if(i <= 7){
+            if(i < 7){
                 if(i % 2 === 0) {
                     setRound(<Round/>)
                     rCycle(3000);
@@ -44,7 +44,7 @@ function Game(props) {
     }
 
     return (
-        <div
+        <div className={`game-zone aim`}
              onPointerDown={toggle}
         >
             {round}

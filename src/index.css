@@ -25,21 +25,15 @@ code {
   background-color: teal;
 }
 
-.figure div{
-  width: 50px;
-  height: 150px;
-  background-color: antiquewhite;
+.figure {
   position: absolute;
-  bottom: 0;
-  transition: height 1s ease-in-out;
+  transition: transform 2s;
 }
 
-.figure div:hover {
-  /*width: 50px;*/
-  height: 5px;
-  background-color: red;
-  /*position: absolute;*/
-  /*bottom: 0;*/
+.figure .down {
+  transform: rotateX(85deg);
+  position: absolute;
+  transform-origin: bottom;
 }
 
 
@@ -64,4 +58,14 @@ code {
 
 .darkgrey {
   background-color: darkgrey;
+}
+
+.start {
+  display: block;
+  margin: 285px auto auto;
+  position: inherit;
+  border: none;
+  padding: 10px;
+  border-radius: 7px;
+  font-size: large;
 }

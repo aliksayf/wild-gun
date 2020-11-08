@@ -4,11 +4,13 @@ const Start = (props) => {
     const { startGame } = props;
 
     return (
-        <h1>
-            <button onClick={startGame}>
+        <div className='game-zone '>
+
+            <button className='start' onClick={startGame}>
                 Start Game
             </button>
-        </h1>
+
+        </div>
     );
 }
 
