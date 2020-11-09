@@ -4,7 +4,7 @@ import sound from './Gunshot.mp3';
 
 function Game(props) {
 
-    const{ startGame } = props;
+    const{ startGame, setInfo, info } = props;
 
     const [audio] = useState(new Audio(sound));
 
@@ -13,8 +13,7 @@ function Game(props) {
     let i = 1;
     const rCycle = (t) => {
         setTimeout(() => {
-            // i % 2 !== 0 ? setRound(<Round/>) : setRound(panel);
-            // i++
+
             if(i < 7){
                 if(i % 2 === 0) {
                     setRound(<Round/>)
@@ -25,6 +24,9 @@ function Game(props) {
                 }
             } else {
                 clearTimeout();
+                const newInfo = {...info, games: info.games + 1}
+                // newInfo.games = info.games + 1
+                setInfo(newInfo)
                 startGame();
             }
             i++

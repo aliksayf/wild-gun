@@ -1,13 +1,13 @@
 import React from "react";
 
 const Start = (props) => {
-    const { startGame } = props;
+    const { startGame, info } = props;
 
     return (
         <div className='game-zone '>
 
             <button className='start' onClick={startGame}>
-                Start Game
+                {info.games === 0 ? 'Start Game' : 'Continue Game'}
             </button>
 
         </div>

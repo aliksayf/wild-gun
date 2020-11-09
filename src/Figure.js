@@ -15,7 +15,7 @@ function Figure(props) {
             bottom: Math.random() * 450,
             right: Math.random() * 750,
             position: 'absolute',
-            transition: 'transform 1s',
+            transition: 'transform .5s',
         });
     }, [])
 
@@ -37,7 +37,6 @@ function Figure(props) {
     // }
 
 
-    console.log('props', props)
 
     return (
         <>

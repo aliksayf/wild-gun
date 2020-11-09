@@ -4,19 +4,35 @@ import './App.css';
 import Start from "./Start";
 
 const initialState = {
-    started: false
+    started: false,
+    games: 0
 }
 
 function App() {
 
-    const [info, setInfo] = useState({initialState});
+    const [info, setInfo] = useState(initialState);
+    const [start, setStart] = useState(false);
+
+    useEffect(()=>
+        console.log(info)
+        , [info])
+
     const startGame = () => {
-        setInfo({...info, started: !info.started})
+        setStart(!start)
     }
 
     return (
         <>
-            {info.started ? <Game startGame={startGame}/> : <Start startGame={startGame}/>}
+            {start
+                ? <Game
+                    startGame={startGame}
+                    setInfo={setInfo}
+                    info={info}
+                />
+                : <Start
+                    startGame={startGame}
+                    info={info}
+                />}
 
 
 
