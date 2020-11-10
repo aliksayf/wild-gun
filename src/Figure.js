@@ -32,20 +32,12 @@ function Figure(props) {
     })
     }
 
-    // const toggle =() => {
-    //     setFig('hitted')
-    // }
-
-
-
     return (
         <>
-            {/*<div className='figure'>*/}
-            {/*    <div id='Fig' onPointerDown={toggle} >ff</div>*/}
-            {/*</div>*/}
+
         <svg
             style={style}
-            className={fig}
+            // className={fig}
             width="57" height="126" viewBox="0 0 57 126"  xmlns="http://www.w3.org/2000/svg">
             <path
                 // className={`figure ${props.el.bgc} ${props.el.order} ${red}`}

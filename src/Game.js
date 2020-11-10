@@ -10,6 +10,10 @@ function Game(props) {
 
     const panel = <div></div>
 
+    const setStart = () => {
+        startGame();
+    }
+
     let i = 1;
     const rCycle = (t) => {
         setTimeout(() => {
@@ -25,9 +29,8 @@ function Game(props) {
             } else {
                 clearTimeout();
                 const newInfo = {...info, games: info.games + 1}
-                // newInfo.games = info.games + 1
                 setInfo(newInfo)
-                startGame();
+                setTimeout(()=> setStart(), 500)
             }
             i++
         }, t)
