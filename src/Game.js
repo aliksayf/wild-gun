@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import Round from './Round';
-import sound from './Gunshot.mp3';
 
 function Game(props) {
 
-    const{ startGame, setInfo, info } = props;
-
-    const [audio] = useState(new Audio(sound));
+    const{ startGame, setInfo, info, gunShot, pong } = props;
 
     const panel = <div></div>
 
@@ -20,7 +17,7 @@ function Game(props) {
 
             if(i < 7){
                 if(i % 2 === 0) {
-                    setRound(<Round/>)
+                    setRound(<Round pong={pong}/>)
                     rCycle(3000);
             } else {
                     setRound(panel);
@@ -43,17 +40,17 @@ function Game(props) {
     const [round, setRound] = useState(panel)
 
     const toggle = () => {
-        audio.pause();
-        audio.currentTime = 0;
-        audio.play();
+        gunShot.pause();
+        gunShot.currentTime = 0;
+        gunShot.play();
     }
 
     return (
         <div className={`game-zone aim`}
              onPointerDown={toggle}
         >
+
             {round}
-            {/*<Round/>*/}
         </div>
     );
 }

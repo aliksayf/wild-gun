@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import Game from './Game';
 import './App.css';
 import Start from "./Start";
+import gunShotSound from './sounds/Gunshot.mp3';
+import pongSound from './sounds/Pong.mp3';
 
 const initialState = {
     started: false,
@@ -10,6 +12,8 @@ const initialState = {
 
 function App() {
 
+    const [gunShot] = useState(new Audio(gunShotSound));
+    const [pong] = useState(new Audio(pongSound));
     const [info, setInfo] = useState(initialState);
     const [start, setStart] = useState(false);
 
@@ -25,6 +29,8 @@ function App() {
         <>
             {start
                 ? <Game
+                    gunShot={gunShot}
+                    pong={pong}
                     startGame={startGame}
                     setInfo={setInfo}
                     info={info}
@@ -33,8 +39,6 @@ function App() {
                     startGame={startGame}
                     info={info}
                 />}
-
-
 
         </>
     );
