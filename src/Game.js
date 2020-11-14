@@ -17,11 +17,11 @@ function Game(props) {
 
             if(i < 7){
                 if(i % 2 === 0) {
-                    setRound(<Round pong={pong}/>)
+                    setRound(<Round pong={pong} info={info} setInfo={setInfo}/>)
                     rCycle(3000);
             } else {
                     setRound(panel);
-                    rCycle(1000);
+                    rCycle(500);
                 }
             } else {
                 clearTimeout();
@@ -51,6 +51,10 @@ function Game(props) {
         >
 
             {round}
+            <div style={{bottom: '332px'}} className='bushes'>{null}</div>
+            <div style={{bottom: '150px'}} className='bushes'>{null}</div>
+            <div style={{bottom: '-32px'}} className='bushes'>{null}</div>
+
         </div>
     );
 }

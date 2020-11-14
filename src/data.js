@@ -34,6 +34,5 @@ const func = () => {
 }
 
 func();
-console.log(list)
 
 export {list};

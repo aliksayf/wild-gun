@@ -1,71 +1,98 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .aim {
-  cursor: url('./svg/aim.svg') 20 20, auto;
+    cursor: url('./svg/aim.svg') 20 20, auto;
+    color: azure;
 }
 
 .game-zone {
-  width: 800px;
-  height: 600px;
-  margin: auto;
-  border: 5px solid black;
-  position: relative;
-  background-color: teal;
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    border: 5px solid black;
+    position: relative;
+    background-image: url("./svg/camouflage.png");
+    opacity: .8;
 }
 
-.figure {
-  position: absolute;
-  transition: transform 2s;
+.bushes {
+    position: absolute;
+    width: 790px;
+    height: 100px;
+    left: 0px;
+    background-image: url("./svg/Grass.png");
+    background-size: 800px 20px;
+    background-repeat: no-repeat;
+    z-index: 1;
 }
 
-.figure .down {
-  transform: rotateX(85deg);
-  position: absolute;
-  transform-origin: bottom;
+.info {
+    margin: 7rem auto auto;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 3;
 }
+
+/*.figure {*/
+/*  position: absolute;*/
+/*  transition: transform 2s;*/
+/*}*/
+
+/*.figure .down {*/
+/*  transform: rotateX(85deg);*/
+/*  position: absolute;*/
+/*  transform-origin: bottom;*/
+/*}*/
 
 
 .third {
-  right: 50px;
+    right: 50px;
 }
 
 .second {
-  right: 150px;
+    right: 150px;
 }
 
 .first {
-  right: 250px;
+    right: 250px;
 }
+
 /*.red {*/
 /*  background-color: #ff0000 !important;*/
 /*}*/
 
 .grey {
-  background-color: grey;
+    background-color: saddlebrown;
 }
 
 .darkgrey {
-  background-color: darkgrey;
+    background-color: darkgrey;
 }
 
 .start {
-  display: block;
-  margin: 285px auto auto;
-  position: inherit;
-  border: none;
-  padding: 10px;
-  border-radius: 7px;
-  font-size: large;
+    display: block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: large;
+    z-index: 2;
 }

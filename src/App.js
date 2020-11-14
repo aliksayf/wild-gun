@@ -5,21 +5,22 @@ import Start from "./Start";
 import gunShotSound from './sounds/Gunshot.mp3';
 import pongSound from './sounds/Pong.mp3';
 
-const initialState = {
+const gameInfo = {
     started: false,
-    games: 0
+    games: 0,
+    hits: 0
 }
 
 function App() {
 
     const [gunShot] = useState(new Audio(gunShotSound));
     const [pong] = useState(new Audio(pongSound));
-    const [info, setInfo] = useState(initialState);
+    const [info, setInfo] = useState(gameInfo);
     const [start, setStart] = useState(false);
 
-    useEffect(()=>
-        console.log(info)
-        , [info])
+    // useEffect(() => {
+    //     console.log(info)
+    // }, [info])
 
     const startGame = () => {
         setStart(!start)
@@ -39,6 +40,7 @@ function App() {
                     startGame={startGame}
                     info={info}
                 />}
+
 
         </>
     );
