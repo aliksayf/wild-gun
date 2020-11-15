@@ -21,69 +21,52 @@ code {
     width: 800px;
     height: 600px;
     margin: auto;
-    border: 5px solid black;
+    /*border: 5px solid black;*/
     position: relative;
-    background-image: url("./svg/camouflage.png");
-    opacity: .8;
+    background-image: url("./svg/Frame 1 (1).png");
+    background-size: 800px 600px;
+    /*background-image: url("./svg/camouflage.png");*/
+    /*opacity: .8;*/
+    /*z-index: 1;*/
 }
 
-.bushes {
-    position: absolute;
-    width: 790px;
-    height: 100px;
-    left: 0px;
-    background-image: url("./svg/Grass.png");
-    background-size: 800px 20px;
-    background-repeat: no-repeat;
-    z-index: 1;
+.start-zone {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    /*border: 5px solid black;*/
+    /*position: relative;*/
+    background-image: url("./svg/Frame 1 (1).png");
+    /*background-size: 800px 600px;*/
+    /*background-image: url("./svg/camouflage.png");*/
+    /*opacity: .8;*/
+    /*z-index: 1;*/
 }
+
+/*.bushes {*/
+/*    position: absolute;*/
+/*    width: 790px;*/
+/*    height: 100px;*/
+/*    left: 0px;*/
+/*    !*background-image: url("./svg/Grass.png");*!*/
+/*    background-size: 800px 20px;*/
+/*    background-repeat: no-repeat;*/
+/*    z-index: 1;*/
+/*}*/
 
 .info {
-    margin: 7rem auto auto;
+    display: block;
+    background-color: white;
+    margin: auto;
+    padding-top: 7rem;
     text-align: center;
-    color: white;
+    color: dimgrey;
     position: relative;
-    z-index: 3;
-}
-
-/*.figure {*/
-/*  position: absolute;*/
-/*  transition: transform 2s;*/
-/*}*/
-
-/*.figure .down {*/
-/*  transform: rotateX(85deg);*/
-/*  position: absolute;*/
-/*  transform-origin: bottom;*/
-/*}*/
-
-
-.third {
-    right: 50px;
-}
-
-.second {
-    right: 150px;
-}
-
-.first {
-    right: 250px;
-}
-
-/*.red {*/
-/*  background-color: #ff0000 !important;*/
-/*}*/
-
-.grey {
-    background-color: saddlebrown;
-}
-
-.darkgrey {
-    background-color: darkgrey;
+    /*z-index: 3;*/
 }
 
 .start {
-    display: block;
+    /*display: block;*/
     position: absolute;
     margin-left: auto;
     margin-right: auto;
@@ -94,5 +77,5 @@ code {
     padding: 10px;
     border-radius: 7px;
     font-size: large;
-    z-index: 2;
+    /*z-index: 2;*/
 }

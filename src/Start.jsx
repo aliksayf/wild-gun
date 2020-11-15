@@ -4,20 +4,25 @@ const Start = (props) => {
     const { startGame, info } = props;
 
     return (
-        <div className='game-zone '>
+        <>
 
-            <h5 className='info'>
+        <div
+            className='start-zone '
+        >
+        </div>
+
+            <div className='info'>
             {info.games !== 0 &&
                 `Hits: ${info.hits} 
                 Round: ${info.games}`
             }
-            </h5>
+            </div>
 
             <button className='start' onClick={startGame}>
                 {info.games === 0 ? 'Start Game' : 'Continue Game'}
             </button>
 
-        </div>
+            </>
     );
 }
 
