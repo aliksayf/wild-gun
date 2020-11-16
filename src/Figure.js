@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import image from './svg/camouflage.png'
 
 function Figure(props) {
 
@@ -68,7 +67,6 @@ function Figure(props) {
                 style={style}
                 width="56" height="125" viewBox="0 0 57 126" xmlns="http://www.w3.org/2000/svg">
                 <path
-                    // className={`${red}`}
                     onPointerDown={shoot}
                     fill={`${red}`}
                     stroke="saddlebrown" strokeWidth="0.5"

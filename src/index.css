@@ -5,6 +5,8 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    background-color: gray;
 }
 
 code {
@@ -25,44 +27,43 @@ code {
     position: relative;
     background-image: url("./svg/Frame 1 (1).png");
     background-size: 800px 600px;
-    /*background-image: url("./svg/camouflage.png");*/
-    /*opacity: .8;*/
-    /*z-index: 1;*/
 }
 
 .start-zone {
     width: 800px;
     height: 600px;
     margin: auto;
-    /*border: 5px solid black;*/
-    /*position: relative;*/
-    background-image: url("./svg/Frame 1 (1).png");
-    /*background-size: 800px 600px;*/
-    /*background-image: url("./svg/camouflage.png");*/
-    /*opacity: .8;*/
-    /*z-index: 1;*/
+    padding-top: 7rem;
+    position: relative;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
 }
 
-/*.bushes {*/
-/*    position: absolute;*/
-/*    width: 790px;*/
-/*    height: 100px;*/
-/*    left: 0px;*/
-/*    !*background-image: url("./svg/Grass.png");*!*/
-/*    background-size: 800px 20px;*/
-/*    background-repeat: no-repeat;*/
-/*    z-index: 1;*/
-/*}*/
-
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
 .info {
     display: block;
-    background-color: white;
+    opacity: .8;
+    width: 400px;
+    font-weight: bold;
+    font-size: xx-large;
+    /*background-color: white;*/
     margin: auto;
-    padding-top: 7rem;
+    padding: 1rem;
     text-align: center;
-    color: dimgrey;
+    color: whitesmoke;
     position: relative;
-    /*z-index: 3;*/
+    z-index: 3;
 }
 
 .start {
