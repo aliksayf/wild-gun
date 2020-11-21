@@ -12,15 +12,18 @@
 .balloon {
     display: inline-block;
     position: absolute;
-    width: 100px;
-    height: 150px;
-    background-color: pink;
     border-radius:80%;
     top: 600px;
     transition: all 6s;
     text-align: center;
     justify-content: center;
     align-items: center;
+}
+
+.color {
+    width: 100px;
+    height: 150px;
+    background-color: pink;
 }
 
 
@@ -34,10 +37,22 @@
     color: green;
 }
 
+.balloon .pop {
+    width: 100px;
+    height: 150px;
+}
+
 .explosion {
-    display: block;
     background-image: url("../image/explosion.svg");
     width: 200px;
     height: 200px;
+    margin-left: -50px;
+    z-index: 3;
+    /*animation: cssAnimation .2s forwards;*/
 }
+/*@keyframes cssAnimation {*/
+/*    0%   {opacity: 1;}*/
+/*    90%  {opacity: .5;}*/
+/*    100% {opacity: 0;}*/
+/*}*/
 
