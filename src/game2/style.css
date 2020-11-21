@@ -1,0 +1,43 @@
+.balloon-zone {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    /*border: 5px solid black;*/
+    position: relative;
+    background-color: palegoldenrod;
+    background-size: 800px 600px;
+    overflow: hidden;
+}
+
+.balloon {
+    display: inline-block;
+    position: absolute;
+    width: 100px;
+    height: 150px;
+    background-color: pink;
+    border-radius:80%;
+    top: 600px;
+    transition: all 6s;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.up {
+    top: -200px;
+}
+
+.balloon h1 {
+    margin-top: 50px;
+    font-weight: 900;
+    color: green;
+}
+
+.explosion {
+    display: block;
+    background-image: url("../image/explosion.svg");
+    width: 200px;
+    height: 200px;
+}
+

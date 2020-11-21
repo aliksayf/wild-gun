@@ -1,7 +1,7 @@
 import React from 'react';
 import Figure from "./Figure";
-import Vector1 from "./svg/Vector1";
-import {list} from './data'
+import Vector1 from "../image/Vector1";
+import {list} from '../data'
 
 
 function Round(props) {

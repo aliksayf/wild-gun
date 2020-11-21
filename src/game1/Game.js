@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+import './index.css';
+
 import Round from './Round';
 
 function Game(props) {

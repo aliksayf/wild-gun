@@ -1,0 +1,15 @@
+.aim {
+    cursor: url('../image/aim.svg') 20 20, auto;
+    color: azure;
+}
+
+.game-zone {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+    /*border: 5px solid black;*/
+    position: relative;
+    background-image: url("../image/Frame 1 (1).png");
+    background-size: 800px 600px;
+}
+
