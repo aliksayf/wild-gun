@@ -10,23 +10,20 @@ import React, {useState,  useEffect} from 'react';
 
 const Bal = (props) => {
 
-    const { el, pop, wrong } = props;
+    const { el, pop, wrong, i } = props;
     console.log(el)
 
-    // const [height, setHeight] = useState('balloon color')
+    const [height, setHeight] = useState('balloon color')
     // const [value, setValue] = useState(randomFromArray(charArray))
     // const [boom, setBoom] =useState(false)
     //
-    // useEffect(()=>{
-    //     setTimeout(()=>{
-    //         setHeight('balloon color up')
-    //     }, 500)
-    //     }
-    // )
+    useEffect(()=>{
+        setTimeout(()=>{
+            setHeight('balloon color up')
+        }, 1000 * i)
+        }
+    )
     //
-    // const styleParam = {
-    //     left: `${el}px`,
-    // }
     //
     // const playPop = () => {
     //     let isPlaying = pop.currentTime > 0 && !pop.paused && !pop.ended
@@ -45,13 +42,14 @@ const Bal = (props) => {
 
 
     return (
-        <div>
-            {/*// className={boom ? 'balloon pop explosion' : height}*/}
-            {/*//  style={styleParam}>*/}
+        <div
+             style={{left: `${el.left}px`}}
+             className={height}
+             >
             {/*// {boom*/}
             {/*//     ? <div className='explosion'> </div>*/}
             {/*//     :*/}
-            {/*//     <h1>{value.toUpperCase()}</h1>}*/}
+            <h1>{el.value.toUpperCase()}</h1>
         </div>
 
     )

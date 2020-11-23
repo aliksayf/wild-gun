@@ -40,7 +40,7 @@
 .balloon .pop {
     width: 100px;
     height: 150px;
-    /*transition: none;*/
+    transition: none;
     background-image: url("../image/explosion.svg");
 
 }

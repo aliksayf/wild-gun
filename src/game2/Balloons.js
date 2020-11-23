@@ -25,7 +25,7 @@ const createBalloon = () => {
 
 const arrayOfBalloons = [];
 
-for(let i = 0; i < 3; i++) {
+for(let i = 0; i < 20; i++) {
     arrayOfBalloons.push(createBalloon())
 }
 const Balloons = (props) => {
@@ -53,13 +53,16 @@ const Balloons = (props) => {
     // }, [bal])
 
 
+
     return (
         <div
             className='balloon-zone'>
-            {bal &&
-            bal.map((el, idx) => (
-                <Bal key={idx} el={el} pop={props.pop} wrong={props.wrong}/>
-            ))}
+
+            {arrayOfBalloons.map((el, idx) => (
+                <Bal key={el.id} i={idx} el={el} pop={props.pop} wrong={props.wrong}/>
+                )
+            )}
+
 
             {/*<img src={expl}></img>*/}
         </div>
