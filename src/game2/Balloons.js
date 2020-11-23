@@ -15,36 +15,42 @@ const randomFromArray = (arr) => {
     return arr[index]
 }
 
+const createBalloon = () => {
+    return {
+        id: Math.random(),
+        left: randomFromArray(rangeArray),
+        value: randomFromArray(charArray)
+    }
+}
+
+const arrayOfBalloons = [];
+
+for(let i = 0; i < 3; i++) {
+    arrayOfBalloons.push(createBalloon())
+}
 const Balloons = (props) => {
 
-    const createBalloon = () => {
-        return {
-            id: Math.random(),
-            left: randomFromArray(rangeArray),
-            value: randomFromArray(charArray)
-        }
-    }
 
-    const [bal, setBal] = useState([createBalloon()])
+    const [bal, setBal] = useState([...arrayOfBalloons])
 
 
-    const randomInterval = () => {
-        if (bal.length < 5) {
-
-            let newArr = [...bal]
-            newArr.push(createBalloon())
-            setBal(newArr)
-        } else clearInterval()
-
-    }
-
-    useEffect(() => {
-
-        setTimeout(() => {
-            randomInterval()
-        }, getRandomArbitrary(500, 1500))
-
-    }, [bal])
+    // const randomInterval = () => {
+    //     if (bal.length < 5) {
+    //
+    //         let newArr = [...bal]
+    //         newArr.push(createBalloon())
+    //         setBal(newArr)
+    //     } else clearInterval()
+    //
+    // }
+    //
+    // useEffect(() => {
+    //
+    //     setTimeout(() => {
+    //         randomInterval()
+    //     }, getRandomArbitrary(500, 1500))
+    //
+    // }, [bal])
 
 
     return (
