@@ -1,4 +1,4 @@
-.balloon-zone {
+.game-zone-balloons {
     width: 800px;
     height: 600px;
     margin: auto;
@@ -9,35 +9,36 @@
     overflow: hidden;
 }
 
-.balloon {
+.wrapper {
     display: inline-block;
     position: absolute;
-    border-radius:80%;
-    top: 600px;
+    /*top: 600px;*/
+    /*transition: top 1s;*/
+}
+
+.balloon {
+    position: absolute;
+    border-radius: 80%;
+    width: 100px;
+    height: 150px;
+    background-color: pink;
     text-align: center;
     justify-content: center;
     align-items: center;
 }
 
-.color {
-    width: 100px;
-    height: 150px;
-    background-color: pink;
-}
+/*.up {*/
+/*    top: 100px;*/
+/*    transition: top 6s;*/
+/*}*/
 
-
-.up {
-    top: -200px;
-    transition: all 8s;
-}
-
-.balloon h1 {
+.wrapper h1 {
     margin-top: 50px;
     font-weight: 900;
     color: green;
 }
 
-.balloon .pop {
+.wrapper .pop {
     width: 100px;
     height: 150px;
     transition: none;
@@ -52,9 +53,15 @@
     z-index: 3;
     /*animation: cssAnimation .2s forwards;*/
 }
+
 /*@keyframes cssAnimation {*/
 /*    0%   {opacity: 1;}*/
 /*    90%  {opacity: .5;}*/
 /*    100% {opacity: 0;}*/
 /*}*/
 
+.test {
+    position: absolute;
+    left: 50px;
+    top: 100px;
+}

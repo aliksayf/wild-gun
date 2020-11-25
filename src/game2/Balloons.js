@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './style.css';
 import Bal from "./Bal";
 
@@ -25,41 +25,63 @@ const createBalloon = () => {
 
 const arrayOfBalloons = [];
 
-for(let i = 0; i < 20; i++) {
+for (let i = 0; i < 3; i++) {
     arrayOfBalloons.push(createBalloon())
 }
+
 const Balloons = (props) => {
 
+    const{ pop } = props
 
-    const [bal, setBal] = useState([...arrayOfBalloons])
+    const [bal, setBal] = useState(arrayOfBalloons)
 
+    const findIdByValue = (value) => {
+        const el = bal.find(el => el.value === value) || null
+        return el && el.id
+    }
 
-    // const randomInterval = () => {
-    //     if (bal.length < 5) {
-    //
-    //         let newArr = [...bal]
-    //         newArr.push(createBalloon())
-    //         setBal(newArr)
-    //     } else clearInterval()
-    //
-    // }
-    //
-    // useEffect(() => {
-    //
-    //     setTimeout(() => {
-    //         randomInterval()
-    //     }, getRandomArbitrary(500, 1500))
-    //
-    // }, [bal])
+    const deleteElementById = (id) => {
+        const newArray = [...bal].filter(el => el.id !== id)
+        setBal(newArray)
 
+    }
+
+    const playPop = () => {
+        // pop.pause();
+        // pop.currentTime = 0;
+        pop.play();
+    }
+
+    const hit = (id) => {
+        deleteElementById(id)
+        playPop()
+        // console.log('bal', bal)
+    }
+
+    window.addEventListener('keydown', (event) => {
+        if(bal.some(el => el.value === event.key.toLowerCase())){
+            const id = findIdByValue(event.key.toLowerCase()) || null
+            hit(id)
+            // console.log('ley', event.key)
+        }
+    });
 
 
     return (
         <div
-            className='balloon-zone'>
+            className='game-zone-balloons'>
+            {/*<div className='balloon'>*/}
+            {/*    Me value*/}
+            {/*</div>*/}
 
-            {arrayOfBalloons.map((el, idx) => (
-                <Bal key={el.id} i={idx} el={el} pop={props.pop} wrong={props.wrong}/>
+            {bal && bal.map((el, idx) => (
+                    <Bal key={el.id}
+                         i={idx}
+                         el={el}
+                         del={deleteElementById}
+                         pop={props.pop}
+                         wrong={props.wrong}
+                    />
                 )
             )}
 

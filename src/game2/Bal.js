@@ -1,56 +1,85 @@
-import React, {useState,  useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 
 
-
-    const charArray = "abcdefghijklmnopqrstuvwxyz".split('')
-    const randomFromArray = (arr) => {
-        let index = Math.floor(Math.random() * arr.length )
-        return arr[index]
-    }
+const charArray = "abcdefghijklmnopqrstuvwxyz".split('')
+const randomFromArray = (arr) => {
+    let index = Math.floor(Math.random() * arr.length)
+    return arr[index]
+}
+const start = Date.now();
 
 const Bal = (props) => {
 
-    const { el, pop, wrong, i } = props;
-    console.log(el)
+    const {el, pop, i, del} = props;
+    // console.log('el', el)
 
-    const [height, setHeight] = useState('balloon color')
-    // const [value, setValue] = useState(randomFromArray(charArray))
-    // const [boom, setBoom] =useState(false)
-    //
-    useEffect(()=>{
-        setTimeout(()=>{
-            setHeight('balloon color up')
-        }, 1000 * i)
+    const [height, setHeight] = useState(600)
+    const [display, setDisplay] = useState(true)
+
+    let timer;
+
+    const remove = () => {
+        clearTimeout(timer)
+        console.log('remove')
+        del(el.id)
+
+    }
+
+    const lift = () => {
+        for (let i = 0; i <= 600; i++) {
+            timer = setTimeout(() => {
+                if (i === 600) {
+                    remove();
+                    setDisplay(false)
+                } else setHeight(600 - i)
+            }, i * 5)
         }
-    )
+    }
+
+    useEffect(() => {
+        const interval = setTimeout(() => {
+            lift()
+        }, 1000 * i)
+
+        return () => {
+            clearInterval(interval)
+
+        };
+    }, [])
+
+    // const check = setInterval(() => {
+    //
+    //     const element = document.getElementById(`${el.id}`)
+    //     if (element) console.log(element.offsetTop)
+    //     // if (element && element.offsetTop <= 0) {
+    //         del(el.id)
+    //         console.log('delete')
+    //         clearInterval(check)
+    //
+    //     // }
+    // }, 1700)
     //
     //
-    // const playPop = () => {
-    //     let isPlaying = pop.currentTime > 0 && !pop.paused && !pop.ended
-    //         && pop.readyState > 2;
-    //     if(!isPlaying) pop.play();
-    // }
     //
     //
-    // window.addEventListener('keydown', (event) => {
-    //     if(event.key === value) {
-    //         console.log(event.key)
-    //         playPop()
-    //         setBoom(true)
-    //     } else wrong.play()
-    // });
 
 
-    return (
-        <div
-             style={{left: `${el.left}px`}}
-             className={height}
-             >
-            {/*// {boom*/}
-            {/*//     ? <div className='explosion'> </div>*/}
-            {/*//     :*/}
-            <h1>{el.value.toUpperCase()}</h1>
-        </div>
+    return (<>
+            {display &&
+            <div
+                style={{left: `${el.left}px`, top: `${height}px`}}
+                className='wrapper'
+                id={el.id}
+            >
+                <div className='balloon'>
+                    <h1>
+                        {/*{height}*/}
+                        {el.value.toUpperCase()}
+                    </h1>
+                </div>
+            </div>
+            }
+        </>
 
     )
 }
