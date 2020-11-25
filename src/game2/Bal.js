@@ -8,43 +8,46 @@ const randomFromArray = (arr) => {
 }
 const start = Date.now();
 
+
 const Bal = (props) => {
 
     const {el, pop, i, del} = props;
     // console.log('el', el)
 
-    const [height, setHeight] = useState(600)
+    const [height, setHeight] = useState('wrapper')
     const [display, setDisplay] = useState(true)
 
-    let timer;
 
     const remove = () => {
-        clearTimeout(timer)
-        console.log('remove')
         del(el.id)
-
     }
 
-    const lift = () => {
-        for (let i = 0; i <= 600; i++) {
-            timer = setTimeout(() => {
-                if (i === 600) {
-                    remove();
-                    setDisplay(false)
-                } else setHeight(600 - i)
-            }, i * 5)
-        }
-    }
+    // const lift = (n) => {
+    //     setHeight(n)
+    //     if(n === 0){
+    //
+    //         remove()
+    //     }
+    // }
+
+    //     let interval
+    // const delay = () => {
+    //     if(!!display){
+    //         interval = setTimeout(() => {
+    //             for (let i = 0; i <= 600; i++) {
+    //                 setTimeout(() => {
+    //                     lift(600 - i)
+    //                 }, i * 5)
+    //             }
+    //         }, 1000 * i)
+    //     }else clearTimeout(interval)
+    // }
+
 
     useEffect(() => {
-        const interval = setTimeout(() => {
-            lift()
+        setTimeout(()=>{
+            setHeight('wrapper up')
         }, 1000 * i)
-
-        return () => {
-            clearInterval(interval)
-
-        };
     }, [])
 
     // const check = setInterval(() => {
@@ -67,13 +70,12 @@ const Bal = (props) => {
     return (<>
             {display &&
             <div
-                style={{left: `${el.left}px`, top: `${height}px`}}
-                className='wrapper'
+                style={{left: `${el.left}px`}}
+                className={height}
                 id={el.id}
             >
                 <div className='balloon'>
                     <h1>
-                        {/*{height}*/}
                         {el.value.toUpperCase()}
                     </h1>
                 </div>

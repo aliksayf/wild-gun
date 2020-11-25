@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import './style.css';
 import Bal from "./Bal";
 
@@ -31,9 +31,10 @@ for (let i = 0; i < 3; i++) {
 
 const Balloons = (props) => {
 
-    const{ pop } = props
+    const {pop} = props
 
     const [bal, setBal] = useState(arrayOfBalloons)
+    const box = useRef(null);
 
     const findIdByValue = (value) => {
         const el = bal.find(el => el.value === value) || null
@@ -55,21 +56,49 @@ const Balloons = (props) => {
     const hit = (id) => {
         deleteElementById(id)
         playPop()
-        // console.log('bal', bal)
+        console.log('hit')
     }
 
-    window.addEventListener('keydown', (event) => {
-        if(bal.some(el => el.value === event.key.toLowerCase())){
-            const id = findIdByValue(event.key.toLowerCase()) || null
-            hit(id)
-            // console.log('ley', event.key)
+    useEffect(() => {
+            box.current.focus()
+        }, [])
+
+    const keyPressHandler = (e) => {
+        console.log('missed')
+        if (bal.some(el => el.value === e.key.toLowerCase())) {
+            const id = findIdByValue(e.key.toLowerCase()) || null
+            let elem = document.getElementById(id)
+            let rect = elem.getBoundingClientRect();
+            if (rect && rect.top >= -120) {
+                hit(id)
+            }
         }
-    });
+    }
+
+    // window.addEventListener('keydown', (event) => {
+    //     if(bal.some(el => el.value === event.key.toLowerCase())){
+    //         const id = findIdByValue(event.key.toLowerCase()) || null
+    //         let elem = document.getElementById(id)
+    //         let rect = elem.getBoundingClientRect();
+    //         // console.log('rect', rect)
+    //         // console.log('top', elem.offsetTop)
+    //         if(rect && rect.top >= 100){
+    //             console.log('rect', rect)
+    //             // hit(id)
+    //         }
+    //
+    //         // console.log('ley', event.key)
+    //     }
+    // });
 
 
     return (
         <div
-            className='game-zone-balloons'>
+            onKeyDown={(e) => keyPressHandler(e)}
+            ref={box}
+            tabIndex={0}
+            className='game-zone-balloons'
+        >
             {/*<div className='balloon'>*/}
             {/*    Me value*/}
             {/*</div>*/}
@@ -81,6 +110,7 @@ const Balloons = (props) => {
                          del={deleteElementById}
                          pop={props.pop}
                          wrong={props.wrong}
+                        // innerRef={innerRef}
                     />
                 )
             )}
