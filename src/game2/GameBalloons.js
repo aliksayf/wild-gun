@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import './style.css';
-import Bal from "./Bal";
+import Balloon from "./Balloon";
 
 const rangeArray = [50, 170, 290, 410, 530, 650];
 const charArray = "abcdefghijklmnopqrstuvwxyz".split('')
@@ -19,21 +19,31 @@ const createBalloon = () => {
     return {
         id: Math.random(),
         left: randomFromArray(rangeArray),
-        value: randomFromArray(charArray)
+        value: randomFromArray(charArray),
+        bang: false
     }
+}
+
+const initialInfo = {
+    started: false,
+    games: 0,
+    hited: 0,
+    missed: 0
 }
 
 const arrayOfBalloons = [];
 
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < 20; i++) {
     arrayOfBalloons.push(createBalloon())
 }
 
-const Balloons = (props) => {
+const GameBalloons = (props) => {
 
-    const {pop} = props
+    const {pop, wrong} = props
 
     const [bal, setBal] = useState(arrayOfBalloons)
+    const [soundPop, setSoundPop] = useState(false)
+    const [gameInfo, setGameInfo] =useState(initialInfo)
     const box = useRef(null);
 
     const findIdByValue = (value) => {
@@ -48,53 +58,49 @@ const Balloons = (props) => {
     }
 
     const playPop = () => {
-        // pop.pause();
-        // pop.currentTime = 0;
-        pop.play();
+        if(soundPop){
+            pop.pause();
+            pop.currentTime = 0;
+            setTimeout(() => {pop.play()}, 10);
+            setSoundPop(false)
+        } else {
+            setTimeout(() => {pop.play()}, 10);
+            setSoundPop(true)
+        }
     }
 
     const hit = (id) => {
         deleteElementById(id)
-        playPop()
-        console.log('hit')
+    }
+
+    const miss = () => {
+        wrong.pause();
+        wrong.currentTime = 0;
+        wrong.play()
     }
 
     useEffect(() => {
-            box.current.focus()
-        }, [])
+        box.current.focus()
+    }, [])
 
     const keyPressHandler = (e) => {
-        console.log('missed')
+        hit(3)
         if (bal.some(el => el.value === e.key.toLowerCase())) {
             const id = findIdByValue(e.key.toLowerCase()) || null
             let elem = document.getElementById(id)
             let rect = elem.getBoundingClientRect();
             if (rect && rect.top >= -120) {
+                playPop()
                 hit(id)
             }
-        }
+        } else miss()
     }
-
-    // window.addEventListener('keydown', (event) => {
-    //     if(bal.some(el => el.value === event.key.toLowerCase())){
-    //         const id = findIdByValue(event.key.toLowerCase()) || null
-    //         let elem = document.getElementById(id)
-    //         let rect = elem.getBoundingClientRect();
-    //         // console.log('rect', rect)
-    //         // console.log('top', elem.offsetTop)
-    //         if(rect && rect.top >= 100){
-    //             console.log('rect', rect)
-    //             // hit(id)
-    //         }
-    //
-    //         // console.log('ley', event.key)
-    //     }
-    // });
 
 
     return (
         <div
             onKeyDown={(e) => keyPressHandler(e)}
+            // onKeyPress={playPop}
             ref={box}
             tabIndex={0}
             className='game-zone-balloons'
@@ -104,12 +110,12 @@ const Balloons = (props) => {
             {/*</div>*/}
 
             {bal && bal.map((el, idx) => (
-                    <Bal key={el.id}
-                         i={idx}
-                         el={el}
-                         del={deleteElementById}
-                         pop={props.pop}
-                         wrong={props.wrong}
+                    <Balloon key={el.id}
+                             i={idx}
+                             el={el}
+                             del={deleteElementById}
+                             pop={props.pop}
+                             wrong={props.wrong}
                         // innerRef={innerRef}
                     />
                 )
@@ -121,4 +127,4 @@ const Balloons = (props) => {
     )
 }
 
-export default Balloons;
+export default GameBalloons;
