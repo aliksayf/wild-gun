@@ -39,7 +39,7 @@
     color: green;
 }
 
-.wrapper .pop {
+.pop {
     width: 100px;
     height: 150px;
     transition: none;
@@ -48,11 +48,13 @@
 }
 
 .explosion {
+    /*position: absolute;*/
     width: 200px;
     height: 200px;
+    margin-top: -20px;
     margin-left: -50px;
     z-index: 3;
-    /*animation: cssAnimation .2s forwards;*/
+    background-image: url("../image/explosion.svg");
 }
 
 /*@keyframes cssAnimation {*/

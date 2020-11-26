@@ -1,5 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react';
 
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 const Balloon = (props) => {
 
     const {el, i, del} = props;
@@ -12,7 +16,7 @@ const Balloon = (props) => {
     const checkPosition = () => {
         if (display === true) {
             if (mountedRef.current) {
-                if (mountedRef.current.offsetTop < 0) {
+                if (mountedRef.current.offsetTop < -200) {
                     mountedRef.current = false;
                     setDisplay(false)
                     del(el.id)
@@ -24,7 +28,7 @@ const Balloon = (props) => {
 
     useEffect(() => {
         let interval = null;
-        if (display){
+        if (display) {
             checkPosition()
         }
         if (display) {
@@ -37,36 +41,39 @@ const Balloon = (props) => {
         return () => clearInterval(interval);
     }, [display, timer]);
 
-    useEffect(() => {
-        // if (display){
-        //     checkPosition()
-        // }
-    }, [timer])
+    // useEffect(() => {
+    //     // if (display){
+    //     //     checkPosition()
+    //     // }
+    // }, [timer])
 
     useEffect(() => {
         setTimeout(() => {
             setHeight('wrapper up')
-        }, 1000 * i);
+        }, getRandomArbitrary(500, 1000) * i);
     }, [])
 
     return (<>
-            {display &&
+            {/*{display &&*/}
             <div
                 style={{left: `${el.left}px`}}
                 className={height}
                 id={el.id}
                 ref={mountedRef}
             >
-                <div className='balloon'>
+                     <div className={el.bang ? 'explosion' : 'balloon'}>
                     <h1>
-                        {el.value.toUpperCase()}
+                        {/*{el.bang}*/}
+                        {!el.bang && el.value.toUpperCase()}
+                        {/*{el.value.toUpperCase()}*/}
                     </h1>
                 </div>
+
             </div>
-            }
+            {/*}*/}
         </>
 
     )
-}
+};
 
 export default Balloon;

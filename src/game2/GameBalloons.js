@@ -27,13 +27,13 @@ const createBalloon = () => {
 const initialInfo = {
     started: false,
     games: 0,
-    hited: 0,
+    hitted: 0,
     missed: 0
 }
 
 const arrayOfBalloons = [];
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 10; i++) {
     arrayOfBalloons.push(createBalloon())
 }
 
@@ -52,9 +52,16 @@ const GameBalloons = (props) => {
     }
 
     const deleteElementById = (id) => {
-        const newArray = [...bal].filter(el => el.id !== id)
-        setBal(newArray)
+        const arr = [...bal]
+            .map(el => el.id === id
+                ? {...el, bang : true}
+                : el)
+        setBal(arr)
 
+        const newArray = [...bal].filter(el => el.id !== id)
+        setTimeout(()=> {
+            setBal(newArray)
+        }, 50)
     }
 
     const playPop = () => {
@@ -89,7 +96,7 @@ const GameBalloons = (props) => {
             const id = findIdByValue(e.key.toLowerCase()) || null
             let elem = document.getElementById(id)
             let rect = elem.getBoundingClientRect();
-            if (rect && rect.top >= -120) {
+            if (rect && rect.top >= -120 && rect.top < 480) {
                 playPop()
                 hit(id)
             }
@@ -100,14 +107,10 @@ const GameBalloons = (props) => {
     return (
         <div
             onKeyDown={(e) => keyPressHandler(e)}
-            // onKeyPress={playPop}
             ref={box}
             tabIndex={0}
             className='game-zone-balloons'
         >
-            {/*<div className='balloon'>*/}
-            {/*    Me value*/}
-            {/*</div>*/}
 
             {bal && bal.map((el, idx) => (
                     <Balloon key={el.id}
@@ -116,13 +119,10 @@ const GameBalloons = (props) => {
                              del={deleteElementById}
                              pop={props.pop}
                              wrong={props.wrong}
-                        // innerRef={innerRef}
                     />
                 )
             )}
 
-
-            {/*<img src={expl}></img>*/}
         </div>
     )
 }
