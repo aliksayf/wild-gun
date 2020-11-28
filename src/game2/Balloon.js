@@ -4,6 +4,14 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+const randomFromArray = (arr) => {
+    let index = Math.floor(Math.random() * arr.length)
+    return arr[index]
+}
+
+const colors = ['blue', 'yellow', 'pink', 'green', 'orange']
+
+
 const Balloon = (props) => {
 
     const {el, i, del} = props;
@@ -12,6 +20,7 @@ const Balloon = (props) => {
     const [height, setHeight] = useState('wrapper')
     const [display, setDisplay] = useState(true)
     const [timer, setTimer] = useState(0)
+    const [color] = useState(randomFromArray(colors))
 
     const checkPosition = () => {
         if (display === true) {
@@ -49,8 +58,8 @@ const Balloon = (props) => {
 
     useEffect(() => {
         setTimeout(() => {
-            setHeight('wrapper up')
-        }, 600 * i);
+            setHeight(height + ' up')
+        }, 1000 * i);
     }, [])
 
     return (<>
@@ -62,7 +71,7 @@ const Balloon = (props) => {
                 id={el.id}
                 ref={mountedRef}
             >
-                     <div className={el.bang ? 'explosion' : 'balloon'}>
+                     <div className={el.bang ? 'explosion' : 'balloon ' + color}>
                     <h1>
                         {/*{el.bang}*/}
                         {!el.bang && el.value.toUpperCase()}
