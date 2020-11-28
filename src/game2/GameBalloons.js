@@ -29,7 +29,7 @@ const createBalloon = () => {
 
 const arrayOfBalloons = [];
 
-for (let i = 0; i < 2; i++) {
+for (let i = 0; i < 25; i++) {
     arrayOfBalloons.push(createBalloon())
 }
 
@@ -64,7 +64,7 @@ const GameBalloons = (props) => {
             : el)
         setBal(arr)
 
-        delay(70)
+        delay(50)
             .then(
             () => {
                 deleteElementById(id)
@@ -90,7 +90,10 @@ const GameBalloons = (props) => {
 
     useEffect(() => {
         if(bal.length === 0) {
-            start()
+            delay(1000)
+                .then(
+                    ()=> start()
+                )
             changeInfo('games')
         }
     }, [bal])
@@ -118,6 +121,7 @@ const GameBalloons = (props) => {
             <div
                 className='game-zone-balloons'
             >
+                <div id="cloud-intro"></div>
 
                 {bal && bal.map((el, idx) => (
                         <Balloon key={el.id}
