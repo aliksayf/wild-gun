@@ -5,9 +5,12 @@ import Balloon from "./Balloon";
 const rangeArray = [50, 170, 290, 410, 530, 650];
 const charArray = "abcdefghijklmnopqrstuvwxyz".split('')
 
-
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+function delay (t) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve("anything");
+        }, t);
+    });
 }
 
 const randomFromArray = (arr) => {
@@ -33,7 +36,7 @@ const initialInfo = {
 
 const arrayOfBalloons = [];
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 20; i++) {
     arrayOfBalloons.push(createBalloon())
 }
 
@@ -42,7 +45,7 @@ const GameBalloons = (props) => {
     const {pop, wrong} = props
 
     const [bal, setBal] = useState(arrayOfBalloons)
-    const [soundPop, setSoundPop] = useState(false)
+    const [focus, setFocus] = useState(false)
     const [gameInfo, setGameInfo] =useState(initialInfo)
     const box = useRef(null);
 
@@ -52,32 +55,31 @@ const GameBalloons = (props) => {
     }
 
     const deleteElementById = (id) => {
-        const arr = [...bal]
-            .map(el => el.id === id
-                ? {...el, bang : true}
-                : el)
-        setBal(arr)
-
         const newArray = [...bal].filter(el => el.id !== id)
-        setTimeout(()=> {
-            setBal(newArray)
-        }, 50)
+        setBal(newArray)
     }
 
     const playPop = () => {
-        if(soundPop){
-            pop.pause();
-            pop.currentTime = 0;
-            setTimeout(() => {pop.play()}, 10);
-            setSoundPop(false)
-        } else {
-            setTimeout(() => {pop.play()}, 10);
-            setSoundPop(true)
-        }
+        pop.pause();
+        pop.currentTime = 0;
+        pop.play()
     }
 
     const hit = (id) => {
-        deleteElementById(id)
+        const arr = [...bal]
+        .map(el => el.id === id
+            ? {...el, bang : true}
+            : el)
+        setBal(arr)
+        // setTimeout(()=> {
+        //     deleteElementById(id)
+        // }, 70)
+        delay(70)
+            .then(
+            () => {
+                deleteElementById(id)
+            }
+        );
     }
 
     const miss = () => {
@@ -91,38 +93,41 @@ const GameBalloons = (props) => {
     }, [])
 
     const keyPressHandler = (e) => {
-        hit(3)
-        if (bal.some(el => el.value === e.key.toLowerCase())) {
-            const id = findIdByValue(e.key.toLowerCase()) || null
+        const id = findIdByValue(e.key.toLowerCase()) || null
+        if (id) {
             let elem = document.getElementById(id)
             let rect = elem.getBoundingClientRect();
-            if (rect && rect.top >= -120 && rect.top < 480) {
+            if (rect.top >= -130 && rect.top < 480) {
+                console.log('press')
                 playPop()
                 hit(id)
             }
-        } else miss()
+        } else if(charArray.includes(e.key.toLowerCase())) miss()
     }
 
 
     return (
-        <div
-            onKeyDown={(e) => keyPressHandler(e)}
-            ref={box}
-            tabIndex={0}
-            className='game-zone-balloons'
-        >
+        <div id="screen"
+             onKeyPress={(e) => keyPressHandler(e)}
+             ref={box}
+             tabIndex={30}
+            >
+            <div
+                className='game-zone-balloons'
+            >
 
-            {bal && bal.map((el, idx) => (
-                    <Balloon key={el.id}
-                             i={idx}
-                             el={el}
-                             del={deleteElementById}
-                             pop={props.pop}
-                             wrong={props.wrong}
-                    />
-                )
-            )}
+                {bal && bal.map((el, idx) => (
+                        <Balloon key={el.id}
+                                 i={idx}
+                                 el={el}
+                                 del={deleteElementById}
+                                 pop={props.pop}
+                                 wrong={props.wrong}
+                        />
+                    )
+                )}
 
+            </div>
         </div>
     )
 }

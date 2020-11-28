@@ -15,6 +15,7 @@
     position: absolute;
     top: 600px;
     transition: top 6s;
+    transition-timing-function: ease-in;
 }
 
 .balloon {
@@ -23,6 +24,8 @@
     width: 100px;
     height: 150px;
     background-color: pink;
+    /*box-shadow: 10px 5px 5px rgba(211, 211, 211, .5);*/
+    /*border: solid rgba(211, 211, 211, .5);*/
     text-align: center;
     justify-content: center;
     align-items: center;

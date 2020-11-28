@@ -16,7 +16,7 @@ const Balloon = (props) => {
     const checkPosition = () => {
         if (display === true) {
             if (mountedRef.current) {
-                if (mountedRef.current.offsetTop < -200) {
+                if (mountedRef.current.offsetTop < -130) {
                     mountedRef.current = false;
                     setDisplay(false)
                     del(el.id)
@@ -34,7 +34,7 @@ const Balloon = (props) => {
         if (display) {
             interval = setInterval(() => {
                 setTimer(timer => timer + 1);
-            }, 1000);
+            }, 500);
         } else if (!display && timer !== 0) {
             clearInterval(interval);
         }
@@ -50,13 +50,14 @@ const Balloon = (props) => {
     useEffect(() => {
         setTimeout(() => {
             setHeight('wrapper up')
-        }, getRandomArbitrary(500, 1000) * i);
+        }, 600 * i);
     }, [])
 
     return (<>
             {/*{display &&*/}
             <div
                 style={{left: `${el.left}px`}}
+                tabIndex={20 - i}
                 className={height}
                 id={el.id}
                 ref={mountedRef}
