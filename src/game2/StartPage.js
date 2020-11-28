@@ -1,13 +1,14 @@
 import React, { useState} from 'react';
-import pongSound from '../sounds/Pong.mp3';
 import popSound from '../sounds/Pop.mp3';
 import wrongSound from '../sounds/Wrong.mp3';
 import GameBalloons from "../game2/GameBalloons";
+import Start from "./Start";
 
 const gameInfo = {
     started: false,
     games: 0,
-    hits: 0
+    hits: 0,
+    missed: 0
 }
 
 function App() {
@@ -21,9 +22,24 @@ function App() {
         setStart(!start)
     }
 
+    const changeInfo = (key) => {
+        const newInfo = {...info}
+        newInfo[key] += 1
+        setInfo(newInfo)
+    }
+
     return (
         <>
-            <GameBalloons pop={pop} wrong={wrong}/>
+            {start
+                ? <GameBalloons
+                    info={info}
+                    pop={pop}
+                    wrong={wrong}
+                    changeInfo={changeInfo}
+                    start={startGame}/>
+                : <Start
+                    start={startGame}
+                    info={info}/>}
         </>
     );
 }

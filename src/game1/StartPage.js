@@ -3,6 +3,7 @@ import Game from './Game';
 import Start from "./Start";
 import gunShotSound from '../sounds/Gunshot.mp3';
 import pongSound from '../sounds/Pong.mp3';
+import './style.css';
 
 const gameInfo = {
     started: false,

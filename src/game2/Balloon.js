@@ -14,7 +14,7 @@ const colors = ['blue', 'yellow', 'pink', 'green', 'orange']
 
 const Balloon = (props) => {
 
-    const {el, i, del} = props;
+    const {el, i, del, miss, speed} = props;
     const mountedRef = useRef(true)
 
     const [height, setHeight] = useState('wrapper')
@@ -28,6 +28,7 @@ const Balloon = (props) => {
                 if (mountedRef.current.offsetTop < -130) {
                     mountedRef.current = false;
                     setDisplay(false)
+                    miss()
                     del(el.id)
                 }
             }
@@ -65,7 +66,7 @@ const Balloon = (props) => {
     return (<>
             {/*{display &&*/}
             <div
-                style={{left: `${el.left}px`}}
+                style={{left: `${el.left}px`, transition: `top ${speed}s`}}
                 tabIndex={20 - i}
                 className={height}
                 id={el.id}

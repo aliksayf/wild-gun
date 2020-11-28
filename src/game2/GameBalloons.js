@@ -27,26 +27,18 @@ const createBalloon = () => {
     }
 }
 
-const initialInfo = {
-    started: false,
-    games: 0,
-    hitted: 0,
-    missed: 0
-}
-
 const arrayOfBalloons = [];
 
-for (let i = 0; i < 20; i++) {
+for (let i = 0; i < 2; i++) {
     arrayOfBalloons.push(createBalloon())
 }
 
 const GameBalloons = (props) => {
 
-    const {pop, wrong} = props
+    const {pop, wrong, info, start, changeInfo} = props
+    const speed = 6 - info.games * 0.2
 
     const [bal, setBal] = useState(arrayOfBalloons)
-    const [focus, setFocus] = useState(false)
-    const [gameInfo, setGameInfo] =useState(initialInfo)
     const box = useRef(null);
 
     const findIdByValue = (value) => {
@@ -71,26 +63,37 @@ const GameBalloons = (props) => {
             ? {...el, bang : true}
             : el)
         setBal(arr)
-        // setTimeout(()=> {
-        //     deleteElementById(id)
-        // }, 70)
+
         delay(70)
             .then(
             () => {
                 deleteElementById(id)
             }
         );
+
+        changeInfo('hits')
+    }
+
+    const wrongHit = () => {
+        wrong.pause();
+        wrong.currentTime = 0;
+        wrong.play();
     }
 
     const miss = () => {
-        wrong.pause();
-        wrong.currentTime = 0;
-        wrong.play()
+        changeInfo('missed')
     }
 
     useEffect(() => {
         box.current.focus()
     }, [])
+
+    useEffect(() => {
+        if(bal.length === 0) {
+            start()
+            changeInfo('games')
+        }
+    }, [bal])
 
     const keyPressHandler = (e) => {
         const id = findIdByValue(e.key.toLowerCase()) || null
@@ -102,7 +105,7 @@ const GameBalloons = (props) => {
                 playPop()
                 hit(id)
             }
-        } else if(charArray.includes(e.key.toLowerCase())) miss()
+        } else if(charArray.includes(e.key.toLowerCase())) wrongHit()
     }
 
 
@@ -119,7 +122,9 @@ const GameBalloons = (props) => {
                 {bal && bal.map((el, idx) => (
                         <Balloon key={el.id}
                                  i={idx}
+                                 speed={speed}
                                  el={el}
+                                 miss={miss}
                                  del={deleteElementById}
                                  pop={props.pop}
                                  wrong={props.wrong}
