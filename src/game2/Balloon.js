@@ -73,9 +73,7 @@ const Balloon = (props) => {
             >
                      <div className={el.bang ? 'explosion' : 'balloon ' + color}>
                     <h1>
-                        {/*{el.bang}*/}
                         {!el.bang && el.value.toUpperCase()}
-                        {/*{el.value.toUpperCase()}*/}
                     </h1>
                 </div>
 
