@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wild-gun/precache-manifest.0076d09504928da7048870f2605741c2.js"
+  "/wild-gun/precache-manifest.61ca6d01b617b641071c0454e34a8dcd.js"
 );
 
 self.addEventListener('message', (event) => {

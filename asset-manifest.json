@@ -1,28 +1,30 @@
 {
   "files": {
-    "main.css": "/wild-gun/static/css/main.e9d78697.chunk.css",
-    "main.js": "/wild-gun/static/js/main.17b61b2c.chunk.js",
-    "main.js.map": "/wild-gun/static/js/main.17b61b2c.chunk.js.map",
+    "main.css": "/wild-gun/static/css/main.67b1786a.chunk.css",
+    "main.js": "/wild-gun/static/js/main.738ba189.chunk.js",
+    "main.js.map": "/wild-gun/static/js/main.738ba189.chunk.js.map",
     "runtime-main.js": "/wild-gun/static/js/runtime-main.49041af9.js",
     "runtime-main.js.map": "/wild-gun/static/js/runtime-main.49041af9.js.map",
     "static/css/2.dec86d71.chunk.css": "/wild-gun/static/css/2.dec86d71.chunk.css",
-    "static/js/2.41568167.chunk.js": "/wild-gun/static/js/2.41568167.chunk.js",
-    "static/js/2.41568167.chunk.js.map": "/wild-gun/static/js/2.41568167.chunk.js.map",
+    "static/js/2.f40cfa91.chunk.js": "/wild-gun/static/js/2.f40cfa91.chunk.js",
+    "static/js/2.f40cfa91.chunk.js.map": "/wild-gun/static/js/2.f40cfa91.chunk.js.map",
     "index.html": "/wild-gun/index.html",
-    "precache-manifest.0076d09504928da7048870f2605741c2.js": "/wild-gun/precache-manifest.0076d09504928da7048870f2605741c2.js",
+    "precache-manifest.61ca6d01b617b641071c0454e34a8dcd.js": "/wild-gun/precache-manifest.61ca6d01b617b641071c0454e34a8dcd.js",
     "service-worker.js": "/wild-gun/service-worker.js",
     "static/css/2.dec86d71.chunk.css.map": "/wild-gun/static/css/2.dec86d71.chunk.css.map",
-    "static/css/main.e9d78697.chunk.css.map": "/wild-gun/static/css/main.e9d78697.chunk.css.map",
-    "static/js/2.41568167.chunk.js.LICENSE.txt": "/wild-gun/static/js/2.41568167.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/wild-gun/static/media/aim.942dedb3.svg",
+    "static/css/main.67b1786a.chunk.css.map": "/wild-gun/static/css/main.67b1786a.chunk.css.map",
+    "static/js/2.f40cfa91.chunk.js.LICENSE.txt": "/wild-gun/static/js/2.f40cfa91.chunk.js.LICENSE.txt",
+    "static/media/style.css": "/wild-gun/static/media/explosion.89f88eba.svg",
     "static/media/Gunshot.mp3": "/wild-gun/static/media/Gunshot.dce02874.mp3",
-    "static/media/Pong.mp3": "/wild-gun/static/media/Pong.986c2719.mp3"
+    "static/media/Pong.mp3": "/wild-gun/static/media/Pong.986c2719.mp3",
+    "static/media/Pop.mp3": "/wild-gun/static/media/Pop.73ecaaf0.mp3",
+    "static/media/Wrong.mp3": "/wild-gun/static/media/Wrong.ae5caba5.mp3"
   },
   "entrypoints": [
     "static/js/runtime-main.49041af9.js",
     "static/css/2.dec86d71.chunk.css",
-    "static/js/2.41568167.chunk.js",
-    "static/css/main.e9d78697.chunk.css",
-    "static/js/main.17b61b2c.chunk.js"
+    "static/js/2.f40cfa91.chunk.js",
+    "static/css/main.67b1786a.chunk.css",
+    "static/js/main.738ba189.chunk.js"
   ]
 }
